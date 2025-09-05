@@ -5,7 +5,7 @@ app.use(express.json());
 
 // Homepage
 app.get("/", (req, res) => {
-  res.send("📧 Temp Mail 10 Min Service is live 24/7 on Render!");
+  res.send("📧 Temp Mail 10 Min Service is live 24/7 on Render (and runs on 5000 locally)!");
 });
 
 // Health check
@@ -26,6 +26,9 @@ app.get("/inbox", (req, res) => {
 });
 
 
-// Render requires PORT from environment variable
+// ✅ Best setup: use Render's port if available, otherwise 5000 locally
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`✅ temp-mail-10mincom running on port ${PORT}`));
+
+app.listen(PORT, () => {
+  console.log(`✅ Server running on http://localhost:${PORT}`);
+});
